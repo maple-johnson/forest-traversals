@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class TreeProblems 
 {
@@ -92,8 +93,15 @@ public class TreeProblems
    then the method should return 32.
    A null tree should return 0
   */
-  public static int sumTree(Node<Integer> root) {
-    return -1;
+  public static int sumTree(Node<Integer> root) 
+  {
+    if (root == null) return 0;
+    int val = 0;
+    for (Node<Integer> child : root.children) 
+      {
+        val = sumTree(child);
+      }
+    return val + root.value;
   }
 
   /*
@@ -115,7 +123,8 @@ public class TreeProblems
 
    Hint: There's a simple way to do this!
   */
-  public static int sumTree(Map<Integer, List<Integer>> tree) {
+  public static int sumTree(Map<Integer, List<Integer>> tree) 
+  {
     return -1;
   }
 
