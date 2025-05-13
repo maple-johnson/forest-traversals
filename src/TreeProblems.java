@@ -125,7 +125,14 @@ public class TreeProblems
   */
   public static int sumTree(Map<Integer, List<Integer>> tree) 
   {
-    return -1;
+    if (tree == null)  return 0;
+    Set<Integer> set = tree.keySet();
+    int total = 0;
+    for (int i : set)
+    {
+      total += i;
+    }
+    return total;
   }
 
   /*
