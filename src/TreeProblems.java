@@ -1,3 +1,5 @@
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -154,8 +156,25 @@ public class TreeProblems
 
    Hint: No recursion needed! Think about how you would do this by hand.
   */
-  public static <T> T findRoot(Map<T, List<T>> tree) {
-    return null;
+  public static <T> T findRoot(Map<T, List<T>> tree) 
+  {
+    Set<T> set = tree.keySet();
+    Collection<List<T>> list = tree.values();
+    List<T> compare = new LinkedList<>();
+    T root = null;
+    for (T item : set)
+    {
+      //if (!tree.containsValue(item)) root = item;
+      for (List<T> li : list)
+      {
+        if (li.contains(item)) compare.add(item);
+      }
+    }
+    for (T item : set)
+    {
+      if (!compare.contains(item)) root = item;
+    }
+    return root;
   }
 
   /*
