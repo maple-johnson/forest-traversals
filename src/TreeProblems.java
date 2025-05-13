@@ -1,7 +1,8 @@
 import java.util.List;
 import java.util.Map;
 
-public class TreeProblems {
+public class TreeProblems 
+{
 
   /*
    postOrder (Node Version)
@@ -27,7 +28,15 @@ public class TreeProblems {
 
    If the root is null, do nothing.
    */
-  public static <T> void postOrder(Node<T> root) {
+  public static <T> void postOrder(Node<T> root) 
+  {
+    if (root == null) return;
+    if (root.children == null) return;
+    for (Node<T> child : root.children)
+    {
+      postOrder(child);
+    }
+    System.out.println(root.value);
   }
 
   /*
@@ -54,7 +63,19 @@ public class TreeProblems {
    8
    5
    */
-  public static <T> void postOrder(Map<T, List<T>> tree, T root) {
+  public static <T> void postOrder(Map<T, List<T>> tree, T root) 
+  {
+    if (root == null || tree == null || !tree.containsKey(root)) return;
+    List<T> children = tree.get(root);
+    if (children != null)
+    {
+      for (T child : children)
+      {
+        postOrder(tree, child);
+      }
+      
+    }
+    System.out.println(root);
   }
 
   /*
